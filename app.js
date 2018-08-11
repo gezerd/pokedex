@@ -2,6 +2,7 @@ var mysql = require('mysql')
 var express = require('express');
 var app = express();
 var path = require('path');
+var sourceFile = require('./creds.js');
 
 // create local server to host index.html on localhost
 app.get('/', function(req, res) {
@@ -16,8 +17,8 @@ app.get('/pokedex', function (req, res) {
 	var connection = mysql.createConnection({
 	  host     : 'localhost',
 	  user     : 'root',
-	  password : '',
-	  database : ''
+	  password : sourceFile.pwName,
+	  database : sourceFile.dbName
 	});
 
 	connection.connect(function(err){
