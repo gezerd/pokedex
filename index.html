@@ -2,18 +2,31 @@
 <html>
 	<head>
 	    <meta charset="UTF-8" />
-	    <title>Add React in One Minute</title>
+	    <title>Pokedex</title>
+	    <link rel="stylesheet" href="styles.css">
+		<script src="index.js"></script>
 	</head>
 	<body>
-		<div id="like_button_container">hello</div>
+		<div id="title_bar">Pokedex</div>
+		<div id="pokemon_image">
+			<img src="img/gif/1.gif" alt="bulbasaur">
+		</div>
+
+		<div id="root"></div>
 
 		<!-- Load React. -->
 		<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
 		<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
 		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+		<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
 		<!-- Load our React component. -->
-		<script src="like_button.js"></script>
+		<script src="pokedex.js" type="text/babel"></script>
+		<!--
+		<script>
+			getSource(setRootHtml);
+		</script>
+	-->
 	</body>
 
 </html>

@@ -1,0 +1,18 @@
+body {
+	margin: 0;
+}
+
+#title_bar {
+	text-align: center;
+	font-size: 50px;
+	background-color: skyblue;
+	border: 25px solid skyblue;
+
+	width: 100%;
+	position: fixed;
+}
+
+#pokemon_image {
+	position: relative;
+	top: 108px;
+}
