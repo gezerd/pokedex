@@ -1,5 +1,3 @@
-//import React, { Component } from 'react';
-
 class Pokedex extends React.Component {
 	constructor(props) {
 		super(props);
@@ -40,13 +38,14 @@ class Pokedex extends React.Component {
 			return <div>Loading...</div>;
 		} else {
 			return (
-				<ul>
-					{pokemon.map(p => (
-						<li key={p.name}>
-							{p.name} {p.type1}
-						</li>
-					))}
-				</ul>
+					pokemon.map(p => (
+						<div id="pokedex_entry" key={p.id}>
+							<div id="center_img">
+								<img src={"./img/gif/" + p.id + ".gif"} />
+								<p id="pokemon_name">{p.name}</p>
+							</div>
+						</div>
+					))
 			);
 		}
 	}
