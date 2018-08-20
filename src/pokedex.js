@@ -1,11 +1,19 @@
-class Pokedex extends React.Component {
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import { Pokemon } from './pokemon.js';
+
+class Pokedex extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			error: null,
 			isLoaded: false,
-			pokemon: []
+			pokemon: [],
+			showPokemon: false,
+			pokemonId: 0
 		};
+
+		this.handleClick = this.handleClick.bind(this);
 	}
 
 	componentDidMount() {
@@ -30,6 +38,32 @@ class Pokedex extends React.Component {
 			)
 	}
 
+	handleClick(id, event) {
+		this.setState({
+			showPokemon: true,
+			pokemonId: id
+		});
+	}
+
+	getComponent() {
+		const pokemon = this.state.pokemon;
+		if (this.state.showPokemon) {
+			return <Pokemon pokemonId={this.state.pokemonId} />;
+		}
+		else {
+			return (
+				pokemon.map(p => (
+					<div id="pokedex_entry" key={p.id} onClick={this.handleClick.bind(this, p.id)}>
+						<div id="center_img">
+							<img src={"./img/gif/" + p.id + ".gif"} />
+							<p id="pokemon_name">{p.name}</p>
+						</div>
+					</div>
+				))
+			);
+		}
+	}
+
 	render() {
 		const { error, isLoaded, pokemon } = this.state;
 		if (error) {
@@ -38,14 +72,7 @@ class Pokedex extends React.Component {
 			return <div>Loading...</div>;
 		} else {
 			return (
-					pokemon.map(p => (
-						<div id="pokedex_entry" key={p.id}>
-							<div id="center_img">
-								<img src={"./img/gif/" + p.id + ".gif"} />
-								<p id="pokemon_name">{p.name}</p>
-							</div>
-						</div>
-					))
+				this.getComponent()
 			);
 		}
 	}

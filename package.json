@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/app.js",
+    "build": "webpack --display-modules"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
@@ -25,6 +26,8 @@
     "url": "https://github.com/gezerd/pokedex/issues"
   },
   "homepage": "https://github.com/gezerd/pokedex#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "webpack-node-externals": "^1.7.2"
+  },
   "keywords": []
 }

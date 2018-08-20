@@ -37,5 +37,30 @@ app.get('/pokedex', function (req, res) {
 	connection.end();
 });
 
+// http://localhost:3000/pokemon/:pokemonId
+app.get('/pokemon/:pokemonId', function (req, res) {
+	var connection = mysql.createConnection({
+	  host     : 'localhost',
+	  user     : 'root',
+	  password : sourceFile.pwName,
+	  database : sourceFile.dbName
+	});
+
+	connection.connect(function(err){
+		if (err) {
+			throw err;
+		}
+		console.log('MySql connected...');
+	});
+
+	connection.query('SELECT * FROM pokemon WHERE id = ' + req.params.pokemonId, function (err, rows, fields) {
+	  if (err) throw err;
+	  console.log('Query completed');
+	  res.send(rows);
+	});
+
+	connection.end();
+});
+
 // Start the server
 app.listen(3000);
