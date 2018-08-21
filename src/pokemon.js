@@ -7,7 +7,7 @@ export class Pokemon extends React.Component {
 		this.state = {
 			error: null,
 			isLoaded: false,
-			pokemonInfo: []
+			p: null
 		};
 	}
 
@@ -18,7 +18,7 @@ export class Pokemon extends React.Component {
 				(result) => {
 					this.setState({
 						isLoaded: true,
-						pokemonInfo: result
+						p: result[0]
 					});
 				},
 				// Note: it's important to handle errors here
@@ -33,14 +33,105 @@ export class Pokemon extends React.Component {
 			)
 	}
 
+	getWidthString(stat) {
+		return (stat / 200 * 100).toString();
+	}
+
+	getComponent() {
+		const p = this.state.p;
+
+		// check if pokemon has a second type
+		let type2;
+		if (p.type2) {
+			type2 = <div className={"type " + p.type2.toLowerCase()}>
+				{p.type2.toUpperCase()}
+			</div>;
+		}
+		else {
+			type2 = <div></div>;
+		}
+
+		// calculate stats' percentage for bar graph
+		const hp_style = {
+			width: this.getWidthString(p.hp) + '%'
+		};
+		const atk_style = {
+			width: this.getWidthString(p.atk) + '%'
+		};
+		const def_style = {
+			width: this.getWidthString(p.def) + '%'
+		};
+		const satk_style = {
+			width: this.getWidthString(p.satk) + '%'
+		};
+		const sdef_style = {
+			width: this.getWidthString(p.sdef) + '%'
+		};
+		const spd_style = {
+			width: this.getWidthString(p.spd) + '%'
+		};
+
+		return (
+			<div id="pokemon_info">
+				<img id="pokemon_img" src={"./img/gif/" + p.id + ".gif"} />
+				<div id="center">
+					<div id="name">{p.name}</div>
+					<div className={"type " + p.type1.toLowerCase()}>
+						{p.type1.toUpperCase()}
+					</div>
+					{type2}	
+				</div>
+
+				<div id="stats">
+					<div className="stat_name">HP</div>
+					<div className="stats_container">
+						<div className="stats_value hp" style={hp_style}>{p.hp}</div>
+					</div>
+
+					<div className="stat_padding"></div>
+					<div className="stat_name">Attack</div>
+					<div className="stats_container">
+						<div className="stats_value atk" style={atk_style}>{p.atk}</div>
+					</div>
+					
+					<div className="stat_padding"></div>
+					<div className="stat_name">Defense</div>
+					<div className="stats_container">
+						<div className="stats_value def" style={def_style}>{p.def}</div>
+					</div>
+
+					<div className="stat_padding"></div>
+					<div className="stat_name">Sp. Atk</div>
+					<div className="stats_container">
+						<div className="stats_value satk" style={satk_style}>{p.satk}</div>
+					</div>
+
+					<div className="stat_padding"></div>
+					<div className="stat_name">Sp. Def</div>
+					<div className="stats_container">
+						<div className="stats_value sdef" style={sdef_style}>{p.sdef}</div>
+					</div>
+					
+					<div className="stat_padding"></div>
+					<div className="stat_name">Speed</div>
+					<div className="stats_container">
+						<div className="stats_value spd" style={spd_style}>{p.spd}</div>
+					</div>
+				</div>
+			</div>
+		);
+	}
+
 	render() {
-		const { error, isLoaded, pokemonInfo } = this.state;
+		const { error, isLoaded, p } = this.state;
 		if (error) {
 			return <div>Error: {error.message}</div>;
 		} else if (!isLoaded) {
 			return <div>Loading...</div>;
 		} else {
-			return <div>{pokemonInfo[0].name}</div>;
+			return (
+				this.getComponent()
+			);
 		}
 	}
 }
