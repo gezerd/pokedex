@@ -178,9 +178,24 @@ body {
 	left: 120px;
 }
 
+@keyframes bar {
+	0% {width: 0%;}
+}
+
 .stats_value {
 	text-align: right;
 	color: white;
+	padding: 10px;
+	animation-name: bar;
+	animation-duration: 1s;
+}
+
+.stat_padding {
+	padding: 10px;
+}
+
+.stat_name {
+	display: inline-block;
 	padding: 10px;
 }
 
@@ -206,13 +221,4 @@ body {
 
 .spd {
 	background-color: #FE9CF4;
-}
-
-.stat_padding {
-	padding: 20px;
-}
-
-.stat_name {
-	display: inline-block;
-	padding: 10px;
 }
