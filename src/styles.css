@@ -1,12 +1,13 @@
 body {
 	margin: 0;
+	background-color: #FFFBDC;
 }
 
 #title_bar {
 	text-align: center;
 	font-size: 50px;
-	background-color: skyblue;
-	border: 25px solid skyblue;
+	background-color: #BDF6FF;
+	border: 25px solid #BDF6FF;
 	top: 0;
 	width: 100%;
 	position: fixed;
@@ -18,6 +19,9 @@ body {
 }
 
 /* pokedex.js */ 
+#back_button {
+	font-size: 30px;
+}
 
 #pokedex_entry {
 	display: table;
@@ -28,13 +32,13 @@ body {
 	margin: -.5px;
 	position: relative;
 	border: 1px solid;
-	background-color: rgba(255, 255, 255, 1);
+	background-color: rgba(255, 251, 220, 1);
 }
 
 #pokedex_entry:hover {
 	transition: transform 0.1s, box-shadow 0.1s;
 	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-	transform: translate(0.25em, -0.25em);
+	transform: translate(10px, -10px) scale(1.05);
 	z-index: 3;
 }
 
@@ -186,8 +190,7 @@ body {
 	text-align: right;
 	color: white;
 	padding: 10px;
-	animation-name: bar;
-	animation-duration: 1s;
+	animation: bar 1s;
 }
 
 .stat_padding {
@@ -221,4 +224,97 @@ body {
 
 .spd {
 	background-color: #FE9CF4;
+}
+
+
+/* pikachu.svg */
+@keyframes moveLeftEar {
+	50% {
+		transform: rotate(-15deg);
+	}	
+}
+
+.left_ear {
+	transform-origin: 40px 248px;
+	animation: moveLeftEar 2s infinite;
+	animation-timing-function: ease-in-out;
+}
+
+@keyframes moveRightEar {
+	50% {
+		transform: rotate(-15deg);
+	}	
+}
+
+.right_ear {
+	transform-origin: 50px 248px;
+	animation: moveRightEar 2s infinite;
+	animation-timing-function: ease-in-out;
+	animation-delay: 0.5s;
+}
+
+@keyframes moveTail {
+	0%, 100% {
+		transform: rotate(-10deg);
+	}
+	50% {
+		transform: rotate(10deg);
+	}	
+}
+
+.tail {
+	transform-origin: 40px 290px;
+	animation: moveTail 3s infinite;
+}
+
+@keyframes moveLeftArm {
+	0%, 100% {
+		transform: rotate(-10deg);
+	}
+	50% {
+		transform: rotate(30deg);
+	}	
+}
+
+.left_arm {
+	transform-origin: 37px 268px;
+	animation: moveLeftArm 0.5s infinite;
+}
+
+@keyframes moveRightArm {
+	0%, 100% {
+		transform: rotate(-2deg);
+	}
+	50% {
+		transform: rotate(2deg);
+	}	
+}
+
+.right_arm {
+	transform-origin: 37px 268px;
+	animation: moveRightArm 2s infinite;
+}
+
+@keyframes shrinkMouth {
+	50% {
+		transform: scale(0.8);
+	}
+}
+
+.mouth {
+	animation: shrinkMouth 2s infinite;
+	transform-origin: 45px 257px;
+}
+
+
+/* pokeball.svg */
+@keyframes movePokeball {
+	100% {
+		transform: rotate(720deg);
+	}
+}
+
+.pokeball {
+	transform-origin: 88px 89px;
+	animation: movePokeball 1s infinite;
 }

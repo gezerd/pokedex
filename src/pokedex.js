@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Pokemon } from './pokemon.js';
 
-class Pokedex extends Component {
+export class Pokedex extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -69,7 +69,7 @@ class Pokedex extends Component {
 		if (error) {
 			return <div>Error: {error.message}</div>;
 		} else if (!isLoaded) {
-			return <div>Loading...</div>;
+			return <object type="image/svg+xml" data="./img/pokeball.svg"></object>;
 		} else {
 			return (
 				this.getComponent()

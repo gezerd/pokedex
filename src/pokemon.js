@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { Pokedex } from './pokedex.js';
 
 export class Pokemon extends React.Component {
 	constructor(props) {
@@ -7,8 +8,11 @@ export class Pokemon extends React.Component {
 		this.state = {
 			error: null,
 			isLoaded: false,
-			p: null
+			p: null,
+			showPokedex: false
 		};
+
+		this.handleClick = this.handleClick.bind(this);
 	}
 
 	componentDidMount() {
@@ -31,6 +35,12 @@ export class Pokemon extends React.Component {
 		          });
 		        }
 			)
+	}
+
+	handleClick(event) {
+		this.setState({
+			showPokedex: true
+		});
 	}
 
 	getWidthString(stat) {
@@ -72,50 +82,53 @@ export class Pokemon extends React.Component {
 		};
 
 		return (
-			<div id="pokemon_info">
-				<img id="pokemon_img" src={"./img/gif/" + p.id + ".gif"} />
-				<div id="center">
-					<div id="name">{p.name}</div>
-					<div className={"type " + p.type1.toLowerCase()}>
-						{p.type1.toUpperCase()}
-					</div>
-					{type2}	
-				</div>
-
-				<div id="stats">
-					<div className="stat_name">HP</div>
-					<div className="stats_container">
-						<div className="stats_value hp" style={hp_style}>{p.hp}</div>
+			<div>
+				<div id="back_button" onClick={this.handleClick.bind(this)}>&#8592; Back to Pokedex</div>
+				<div id="pokemon_info">
+					<img id="pokemon_img" src={"./img/gif/" + p.id + ".gif"} />
+					<div id="center">
+						<div id="name">{p.name}</div>
+						<div className={"type " + p.type1.toLowerCase()}>
+							{p.type1.toUpperCase()}
+						</div>
+						{type2}	
 					</div>
 
-					<div className="stat_padding"></div>
-					<div className="stat_name">Attack</div>
-					<div className="stats_container">
-						<div className="stats_value atk" style={atk_style}>{p.atk}</div>
-					</div>
-					
-					<div className="stat_padding"></div>
-					<div className="stat_name">Defense</div>
-					<div className="stats_container">
-						<div className="stats_value def" style={def_style}>{p.def}</div>
-					</div>
+					<div id="stats">
+						<div className="stat_name">HP</div>
+						<div className="stats_container">
+							<div className="stats_value hp" style={hp_style}>{p.hp}</div>
+						</div>
 
-					<div className="stat_padding"></div>
-					<div className="stat_name">Sp. Atk</div>
-					<div className="stats_container">
-						<div className="stats_value satk" style={satk_style}>{p.satk}</div>
-					</div>
+						<div className="stat_padding"></div>
+						<div className="stat_name">Attack</div>
+						<div className="stats_container">
+							<div className="stats_value atk" style={atk_style}>{p.atk}</div>
+						</div>
+						
+						<div className="stat_padding"></div>
+						<div className="stat_name">Defense</div>
+						<div className="stats_container">
+							<div className="stats_value def" style={def_style}>{p.def}</div>
+						</div>
 
-					<div className="stat_padding"></div>
-					<div className="stat_name">Sp. Def</div>
-					<div className="stats_container">
-						<div className="stats_value sdef" style={sdef_style}>{p.sdef}</div>
-					</div>
-					
-					<div className="stat_padding"></div>
-					<div className="stat_name">Speed</div>
-					<div className="stats_container">
-						<div className="stats_value spd" style={spd_style}>{p.spd}</div>
+						<div className="stat_padding"></div>
+						<div className="stat_name">Sp. Atk</div>
+						<div className="stats_container">
+							<div className="stats_value satk" style={satk_style}>{p.satk}</div>
+						</div>
+
+						<div className="stat_padding"></div>
+						<div className="stat_name">Sp. Def</div>
+						<div className="stats_container">
+							<div className="stats_value sdef" style={sdef_style}>{p.sdef}</div>
+						</div>
+						
+						<div className="stat_padding"></div>
+						<div className="stat_name">Speed</div>
+						<div className="stats_container">
+							<div className="stats_value spd" style={spd_style}>{p.spd}</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -123,15 +136,20 @@ export class Pokemon extends React.Component {
 	}
 
 	render() {
-		const { error, isLoaded, p } = this.state;
+		const { error, isLoaded, p, showPokedex } = this.state;
 		if (error) {
 			return <div>Error: {error.message}</div>;
 		} else if (!isLoaded) {
-			return <div>Loading...</div>;
+			return <object type="image/svg+xml" data="./img/pokeball.svg"></object>;
 		} else {
-			return (
-				this.getComponent()
-			);
+			if (showPokedex) {
+				return <Pokedex />;
+			}
+			else {
+				return (
+					this.getComponent()
+				);
+			}
 		}
 	}
 }
