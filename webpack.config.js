@@ -1,5 +1,5 @@
 module.exports = {
-  entry: './src/pokedex.js',
+  entry: './src/root.js',
   output: {
     path: __dirname + '/src/dist',
     publicPath: '/',

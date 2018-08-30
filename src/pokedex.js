@@ -79,7 +79,7 @@ export class Pokedex extends Component {
 		}
 		else {
 			return (
-				<div>
+				<div id="body_content">
 					<div id="sidebar">
 						<p className="sidebar_title">Search by Name</p>
 						<input id="search_bar" type="text" value={this.state.search} onChange={this.updateSearch.bind(this)} />
@@ -95,7 +95,7 @@ export class Pokedex extends Component {
 								}
 								else {
 									return (
-										<button className={"search_button " + type.toLowerCase()} key={type.toLowerCase()} value={type} onClick={this.updateTypeSearch.bind(this)}>
+										<button className={"search_button "} key={type.toLowerCase()} value={type} onClick={this.updateTypeSearch.bind(this)}>
 											{type}
 										</button>
 									);
@@ -106,6 +106,7 @@ export class Pokedex extends Component {
 								Reset
 							</button>
 						</div>
+						<object className="pikachu_img" type="image/svg+xml" data="./img/pikachu.svg"></object>
 					</div>
 					{pokemon.map(p => (
 						<div id="pokedex_entry" key={p.id} onClick={this.handleClick.bind(this, p.id)}>
@@ -133,8 +134,3 @@ export class Pokedex extends Component {
 		}
 	}
 }
-
-ReactDOM.render(
-	<Pokedex />,
-	document.getElementById('root')
-);

@@ -1,28 +1,35 @@
 body {
 	margin: 0;
-	background-color: #FDFFDD;
+	background-color: #F8FAE3;
 }
 
 #title_bar {
 	text-align: center;
 	font-family: Consolas;
-	font-size: 70px;
-	background-color: #5F56E8;
-	padding: 40px;
+	font-size: 60px;
+	padding: 20px;
 	top: 0;
 	width: 100%;
 	position: fixed;
 	z-index: 5;
 	color: white;
+	background-image: url("./img/beach.jpg");
+	background-size: cover;
+	background-attachment: fixed;
+	text-shadow: 2px 2px 2px #000000;
 }
 
 #root {
-	margin-top: 162px;
 	font-family: Tahoma;
-	max-width: 90%;
 }
 
 /* pokedex.js */ 
+#body_content {
+	max-width: 90%;
+	position: relative;
+	top: 110px;
+}
+
 @keyframes back_hover {
 	100% {
 		background-color: #FCFFAC;
@@ -43,18 +50,15 @@ body {
 
 #sidebar {
 	height: 100%;
-	width: 250px;
+	width: 175px;
 	position: fixed;
-	background-color: #D8D5FF;
-	border-top: 1px solid;
-	border-right: 1px solid;
 	z-index: 4;
-	padding-left: 20px;
+	padding-left: 10px;
 }
 
 #search_bar {
 	font-size: 20px;
-	width: 200px;
+	width: 160px;
 	z-index: 5;
 }
 
@@ -63,14 +67,14 @@ body {
 }
 
 .search_button {
-	width: 110px;
+	width: 75px;
 	padding: 10px;
 	display: block;
 	float: left;
 	border: 1px solid #9C9C9C;
 	border-radius: 4px;
-	margin: 5px;
-	font-size: 20px;
+	margin: 2px;
+	font-size: 15px;
 	background-color: white;
 }
 
@@ -84,12 +88,12 @@ body {
 }
 
 .sidebar_title {
-	font-size: 25px;
+	font-size: 22px;
 }
 
 #pokedex_entry {
 	display: table;
-	left: 270px;
+	left: 185px;
 	height: 250px;
 	width: 250px;
 	text-align: center;
@@ -97,8 +101,8 @@ body {
 	float: left;
 	margin: -.5px;
 	position: relative;
-	border: 1px solid;
-	background-color: rgba(253, 255, 221, 1);
+	border: 1px solid #D3D3D3;
+	background-color: rgba(239, 255, 254, 1);
 }
 
 #pokedex_entry:hover {
@@ -294,9 +298,7 @@ body {
 
 /* pikachu.svg */
 .pikachu_img {
-	position: fixed;
-	top: 15px;
-	left: 50px;
+	padding-top: 30px;
 	z-index: 10;
 }
 

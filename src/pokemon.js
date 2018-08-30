@@ -82,7 +82,7 @@ export class Pokemon extends React.Component {
 		};
 
 		return (
-			<div>
+			<div id="body_content">
 				<div id="back_button" onClick={this.handleClick.bind(this)}>&#8592; Back to Pokedex</div>
 				<div id="pokemon_info">
 					<img id="pokemon_img" src={"./img/gif/" + p.id + ".gif"} />
