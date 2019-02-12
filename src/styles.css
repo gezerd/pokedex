@@ -1,6 +1,6 @@
 body {
 	margin: 0;
-	background-color: #F8FAE3;
+	background-color: #D7FCFF;
 }
 
 #title_bar {
@@ -13,10 +13,11 @@ body {
 	position: fixed;
 	z-index: 5;
 	color: white;
-	background-image: url("./img/beach.jpg");
+	/* background-image: url("./img/beach.jpg"); */
+	background-color: #545454;
 	background-size: cover;
 	background-attachment: fixed;
-	text-shadow: 2px 2px 2px #000000;
+	/* text-shadow: 2px 2px 2px #000000; */
 }
 
 #root {
@@ -32,7 +33,7 @@ body {
 
 @keyframes back_hover {
 	100% {
-		background-color: #FCFFAC;
+		background-color: #C4E6E8;
 	}
 }
 
@@ -54,6 +55,8 @@ body {
 	position: fixed;
 	z-index: 4;
 	padding-left: 10px;
+	background-color: #373737;
+	color: white;
 }
 
 #search_bar {
@@ -68,13 +71,13 @@ body {
 
 .search_button {
 	width: 75px;
-	padding: 10px;
+	padding: 3px;
 	display: block;
 	float: left;
 	border: 1px solid #9C9C9C;
 	border-radius: 4px;
-	margin: 2px;
-	font-size: 15px;
+	margin: 5px;
+	font-size: 17px;
 	background-color: white;
 }
 
@@ -98,13 +101,16 @@ body {
 	left: 185px;
 	height: 250px;
 	width: 250px;
+	font-weight: bold;
+	color: #4C5F5F;
 	text-align: center;
 	font-size: 20px;
 	float: left;
 	margin: -.5px;
 	position: relative;
-	border: 1px solid #D3D3D3;
-	background-color: rgba(239, 255, 254, 1);
+	border: 1px solid #80A0A3;
+	/* background-color: rgba(239, 255, 254, 1); */
+	background-color: #D7FCFF;
 }
 
 #pokedex_entry:hover {
@@ -130,6 +136,7 @@ body {
 #pokemon_info {
 	position: relative;
 	top: 40px;
+	left: 5%;
 }
 
 #pokemon_img {
@@ -247,7 +254,7 @@ body {
 
 .stats_container {
 	width: 35%;
-	background-color: #ddd;
+	background-color: #cccccc;
 	display: inline-block;
 	position: absolute;
 	left: 120px;
@@ -259,7 +266,7 @@ body {
 
 .stats_value {
 	text-align: right;
-	color: white;
+	color: black;
 	padding: 10px;
 	animation: bar 1s;
 }
